@@ -204,11 +204,13 @@ module JavaBuildpack
         @logger.info { "Copy override configuration files from #{app_conf_dir}" }
         CONFIG_FILES.each do |conf_file|
           conf_file_path = @application.root + app_conf_dir + '/' + conf_file
+          @logger.info { "Copying #{conf_file_path}" }
 
           next unless File.file?(conf_file_path)
 
           Dir.glob(@droplet.sandbox + 'ver*') do |target_directory|
             FileUtils.cp_r conf_file_path, target_directory + '/conf/' + conf_file
+            @logger.info { "Copied #{conf_file_path}" }
           end
         end
       end
