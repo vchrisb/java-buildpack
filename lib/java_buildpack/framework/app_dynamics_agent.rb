@@ -204,7 +204,7 @@ module JavaBuildpack
         @logger.info { "Copy override configuration files from #{app_conf_dir}" }
 
         CONFIG_FILES.each do |conf_file|
-          conf_file_path = @application.root + app_conf_dir + app_conf_dir
+          conf_file_path = @application.root + app_conf_dir + conf_file
           @logger.info { "Copying #{app_conf_dir}" }
 
           next unless File.file?(conf_file_path)
