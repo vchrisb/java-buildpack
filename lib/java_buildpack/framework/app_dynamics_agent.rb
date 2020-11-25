@@ -200,14 +200,11 @@ module JavaBuildpack
       def override_default_config_local
         return unless @application.environment['APPD_CONF_DIR']
 
-        app_conf_dir = @application.environment['APPD_CONF_DIR']
+        app_conf_dir = @application.root + @application.environment['APPD_CONF_DIR'] + '/'
         @logger.info { "Copy override configuration files from #{app_conf_dir}" }
-        test_path = @application.root + app_conf_dir
-        @logger.info { "App dir #{test_path}" }
+
         CONFIG_FILES.each do |conf_file|
-          test_path = app_conf_dir + '/'
-          @logger.info { "App dir2 #{test_path}" }
-          conf_file_path = @application.root + app_conf_dir + '/' + conf_file
+          conf_file_path = app_conf_dir + conf_file
           @logger.info { "Copying #{conf_file_path}" }
 
           next unless File.file?(conf_file_path)
