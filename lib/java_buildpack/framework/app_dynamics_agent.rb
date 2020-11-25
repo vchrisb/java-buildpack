@@ -205,7 +205,7 @@ module JavaBuildpack
         test_path = @application.root + app_conf_dir
         @logger.info { "App dir #{test_path}" }
         CONFIG_FILES.each do |conf_file|
-          test_path = @application.root + app_conf_dir + '/'
+          test_path = app_conf_dir + '/'
           @logger.info { "App dir2 #{test_path}" }
           conf_file_path = @application.root + app_conf_dir + '/' + conf_file
           @logger.info { "Copying #{conf_file_path}" }
