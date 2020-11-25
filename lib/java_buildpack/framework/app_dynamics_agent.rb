@@ -206,7 +206,7 @@ module JavaBuildpack
 
         CONFIG_FILES.each do |conf_file|
           conf_file_path = conf_file
-          @logger.info { "Copying #{conf_file_path}" }
+          @logger.info { "Copying #{app_conf_dir}" }
 
           next unless File.file?(conf_file_path)
 
